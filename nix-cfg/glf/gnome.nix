@@ -116,7 +116,6 @@
             show-mounts-network = true;
             always-center-icons = true;
             custom-theme-shrink = true;
-            dock-fixed = true;
           };
 
           "org/gnome/mutter" = {
