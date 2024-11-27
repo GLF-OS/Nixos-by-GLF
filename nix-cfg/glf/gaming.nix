@@ -29,7 +29,6 @@
       package = pkgs.steam.override { extraEnv = { MANGOHUD = true; OBS_VKCAPTURE = true; }; };
       extest.enable = true;
       remotePlay.openFirewall = true;
-      gamescopeSession.enable = true;
       localNetworkGameTransfers.openFirewall = true;
       extraCompatPackages = with pkgs; [ proton-ge-bin ];
     };

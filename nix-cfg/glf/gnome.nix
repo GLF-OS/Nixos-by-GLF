@@ -6,18 +6,19 @@
   services = {
     udev.packages = [ pkgs.gnome-settings-daemon ];
     xserver = {
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = lib.mkDefault true;
+      desktopManager.gnome.enable = lib.mkDefault true;
     };
-  };
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
   };
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Packages système
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
+
   environment.systemPackages = with pkgs;[
 
     # theme
@@ -40,8 +41,6 @@
   # Paquets exclus de l'installation de GNOME
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   environment.gnome.excludePackages = with pkgs; [
-    xterm
-    gnome-tour
     tali
     iagno
     hitori
@@ -49,11 +48,16 @@
     yelp
     geary
     xterm
-    gnome-user-docs
+
     epiphany
-    gnome-packagekit
     packagekit
+
     gnome-tour
+    gnome-software
+    gnome-contacts
+    gnome-user-docs
+    gnome-packagekit
+    gnome-font-viewer
   ];
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
