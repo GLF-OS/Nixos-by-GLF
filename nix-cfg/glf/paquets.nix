@@ -10,9 +10,12 @@
   environment.systemPackages = with pkgs;[
     # APP
     discord
+    
+    #Fetch en attendant GLF-FETCH
+    fastfetch
 
     # Bureautique  
-    # libreoffice-bin
+    libreoffice-fresh
     hunspell
     hunspellDicts.fr-moderne
 
