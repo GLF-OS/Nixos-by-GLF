@@ -673,9 +673,11 @@ def run():
     nixosInstallCmd.extend(
         [
             "nixos-install",
-            root_mount_point,
+            "--no-root-passwd",
             "--flake",
-            # "--no-root-passwd"
+            f"{root_mount_point}/etc/nixos#GLF-OS",
+            "--root",
+            root_mount_point
         ]
     )
 
