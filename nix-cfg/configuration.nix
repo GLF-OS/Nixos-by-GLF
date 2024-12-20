@@ -17,6 +17,8 @@
     extraGroups = [ "networkmanager" "wheel" "render" ];
   };
 
+  networking.hostName = "GLF-OS";
+
   # nvidia_config.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

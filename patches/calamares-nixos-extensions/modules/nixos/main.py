@@ -673,10 +673,9 @@ def run():
     nixosInstallCmd.extend(
         [
             "nixos-install",
-            " --root ",
             root_mount_point,
-            " --flake ",
-            " --no-root-passwd ",
+            "--flake",
+            "--no-root-passwd"
         ]
     )
 
