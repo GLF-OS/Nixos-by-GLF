@@ -4,7 +4,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    glf.url     = "github:CORAAL/glf-flake";
+    glf.url     = "github:CORAAL/Nixos-by-GLF";
   };
 
   outputs = { self, nixpkgs, glf, ... }@inputs:
