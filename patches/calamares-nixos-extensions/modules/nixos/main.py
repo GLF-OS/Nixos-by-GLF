@@ -676,7 +676,7 @@ def run():
             " --flake "
             " .#GLF-OS "
             " --no-root-passwd ",
-            " --root ",
+            # " --root ",
             root_mount_point
         ]
     )
