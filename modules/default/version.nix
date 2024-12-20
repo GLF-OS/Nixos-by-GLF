@@ -16,19 +16,22 @@
       cfg = config.system.nixos;
 
       # Fonction pour échapper les caractères spéciaux
-      needsEscaping = s: null != builtins.match "[a-zA-Z0-9]+" s;
-      escapeIfNecessary = s: if needsEscaping s then s else ''"${escape [ "\$" "\"" "\\" "\`" ] s}"'';
+      needsEscaping = s: null != builtins.match "[^a-zA-Z0-9]+" s;
+      escapeIfNecessary = s: if needsEscaping s then ''"${builtins.replaceStrings ["\\" "\`" "\"" "\$"] [ "\\\\" "\\`" "\\\"" "\\$" ] s}"'' else s;
 
       # Convertit des attributs en format texte
       attrsToText = attrs:
-        concatStringsSep "\n" (mapAttrsToList (n: v: ''${n}=${escapeIfNecessary (toString v)}'') attrs) + "\n";
+        let
+          attrStrings = mapAttrsToList (n: v: ''${n}=${escapeIfNecessary (toString v)}'') attrs;
+        in
+          builtins.concatStrings "\n" attrStrings + "\n";
 
       # Contenu des fichiers os-release et lsb-release
       osReleaseContents = {
         NAME = DISTRO_NAME;
         ID = DISTRO_ID;
         VERSION = "${cfg.release} (${cfg.codeName})";
-        VERSION_CODENAME = toLower cfg.codeName;
+        VERSION_CODENAME = builtins.toLower cfg.codeName;
         VERSION_ID = cfg.release;
         BUILD_ID = cfg.version;
         PRETTY_NAME = "${DISTRO_NAME} ${cfg.release} (${cfg.codeName})";
@@ -52,7 +55,7 @@
         LSB_VERSION = "${cfg.release} (${cfg.codeName})";
         DISTRIB_ID = DISTRO_ID;
         DISTRIB_RELEASE = cfg.release;
-        DISTRIB_CODENAME = toLower cfg.codeName;
+        DISTRIB_CODENAME = builtins.toLower cfg.codeName;
         DISTRIB_DESCRIPTION = "${DISTRO_NAME} ${cfg.release} (${cfg.codeName})";
       });
 
