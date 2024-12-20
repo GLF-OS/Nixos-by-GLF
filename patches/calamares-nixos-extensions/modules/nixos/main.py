@@ -675,7 +675,7 @@ def run():
             "nixos-install",
             "--no-root-passwd",
             "--flake",
-            root_mount_point + "/etc/nixos#" + hostname,
+            f"{root_mount_point}/etc/nixos#GLF-OS",
             "--root",
             root_mount_point
         ]
