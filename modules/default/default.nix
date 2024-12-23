@@ -13,7 +13,7 @@
     ./pipewire.nix
     ./system.nix
     # ./updateConf.nix
-    # ./version.nix
+    ./version.nix
   ];
   
 }

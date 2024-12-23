@@ -13,7 +13,7 @@
       inherit system;
       config.allowUnfree = true;
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
-};
+    };
   in {
    nixosConfigurations."GLF-OS" = nixpkgs.lib.nixosSystem {
       pkgs = pkgsSettings "x86_64-linux";
