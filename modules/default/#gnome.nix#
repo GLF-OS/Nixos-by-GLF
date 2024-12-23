@@ -50,6 +50,7 @@
       # gnome
       gnome-tweaks
 
+
       # Extension
       gnomeExtensions.caffeine
       gnomeExtensions.gsconnect
@@ -83,7 +84,7 @@
     ];
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Paramètres GNOME
+    # Paramètre GNOME
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     programs.dconf = {
       enable = true;
