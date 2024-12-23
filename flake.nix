@@ -1,11 +1,16 @@
 {
-  inputs = { nixpkgs.url = "nixpkgs/nixos-24.11"; };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
-  outputs = { nixpkgs, ... } @ inputs:
+  outputs = { self, nixpkgs, ... } @inputs:
     let system = "x86_64-linux";
     in
     rec
     {
+
+      nixosModules = {
+	default = import ./modules/default;
+      };
+      
       iso = nixosConfigurations."glf-installer".config.system.build.isoImage;
 
       nixosConfigurations = {
