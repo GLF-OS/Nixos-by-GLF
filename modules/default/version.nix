@@ -1,7 +1,5 @@
 { lib, config, options, pkgs, ... }:
 
-# source: https://github.com/snowfallorg/snowflakeos-modules/blob/main/modules/nixos/snowflakeos/version.nix
-
 with lib;
 let
   DISTRO_NAME = "GLF-OS";
@@ -35,17 +33,25 @@ let
   initrdRelease = pkgs.writeText "initrd-release" (attrsToText initrdReleaseContents);
 in
 {
-  environment.etc."os-release".text = mkForce (attrsToText osReleaseContents);
-  environment.etc."lsb-release".text = mkForce (attrsToText {
-    LSB_VERSION = "${cfg.release} (${cfg.codeName})";
-    DISTRIB_ID = DISTRO_ID;
-    DISTRIB_RELEASE = cfg.release;
-    DISTRIB_CODENAME = toLower cfg.codeName;
-    DISTRIB_DESCRIPTION = "${DISTRO_NAME} ${cfg.release} (${cfg.codeName})";
-  });
-  boot.initrd.systemd.contents."/etc/os-release".source = mkForce initrdRelease;
-  boot.initrd.systemd.contents."/etc/initrd-release".source = mkForce initrdRelease;
-  # boot.plymouth.enable = mkDefault true;
-  system.nixos.distroName = DISTRO_NAME;
-  system.nixos.distroId = DISTRO_ID;
+  options.glf.version.enable = mkOption {
+    description = "Enable GLF version configurations.";
+    type = types.bool;
+    default = true;
+  };
+
+  config = mkIf config.glf.version.enable {
+    environment.etc."os-release".text = mkForce (attrsToText osReleaseContents);
+    environment.etc."lsb-release".text = mkForce (attrsToText {
+      LSB_VERSION = "${cfg.release} (${cfg.codeName})";
+      DISTRIB_ID = DISTRO_ID;
+      DISTRIB_RELEASE = cfg.release;
+      DISTRIB_CODENAME = toLower cfg.codeName;
+      DISTRIB_DESCRIPTION = "${DISTRO_NAME} ${cfg.release} (${cfg.codeName})";
+    });
+    boot.initrd.systemd.contents."/etc/os-release".source = mkForce initrdRelease;
+    boot.initrd.systemd.contents."/etc/initrd-release".source = mkForce initrdRelease;
+    # boot.plymouth.enable = mkDefault true;
+    system.nixos.distroName = DISTRO_NAME;
+    system.nixos.distroId = DISTRO_ID;
+  };
 }

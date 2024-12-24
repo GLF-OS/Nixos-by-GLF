@@ -1,14 +1,11 @@
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# DO NOT TOUCH
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 { config, lib, ... }:
 with lib;
 let
-  cfg = config.nvidia_config;
+  cfg = config.glf.nvidia_config;
 in
 {
   # declare option 
-  options.nvidia_config = {
+  options.glf.nvidia_config = {
     enable = mkOption {
       type = with types; bool;
       default = false;
@@ -37,10 +34,10 @@ in
   config = mkIf cfg.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
 
-    nixpkgs.config.nvidia.acceptLicense = true;
+    # nixpkgs.config.nvidia.acceptLicense = true;
 
     hardware.nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
       open = false;
 
       nvidiaSettings = true;

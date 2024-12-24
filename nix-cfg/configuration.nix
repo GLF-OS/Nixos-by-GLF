@@ -1,12 +1,6 @@
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# NE TOUCHEZ A RIEN
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 { config, pkgs, lib, ... }:
+
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./glf
-  ];
 
   i18n.defaultLocale = "fr_FR.UTF-8";
 
@@ -18,13 +12,14 @@
     excludePackages = [ pkgs.xterm ];
   };
 
-  users.users.test = {
+  users.users.nixos = {
     isNormalUser = true;
-    description = "test";
     extraGroups = [ "networkmanager" "wheel" "render" ];
   };
 
-  nvidia_config.enable = true;
+  networking.hostName = "GLF-OS";
+
+  # nvidia_config.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
