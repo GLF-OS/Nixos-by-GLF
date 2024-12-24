@@ -10,21 +10,20 @@
 
   config = lib.mkIf config.glf.system.enable {
 
-      hardware.graphics = {
-	enable = true;
-	enable32Bit = true;
-      };
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
-      nix = {
-	optimise = {
-	  automatic = true;
-	  dates = [ "weekly" ];
-	};
-
-	settings = {
-	  auto-optimise-store = true;
-	};
+    nix = {
+      optimise = {
+	automatic = true;
+	dates = [ "weekly" ];
       };
+      settings = {
+	auto-optimise-store = true;
+      };
+    };
     
   };
 

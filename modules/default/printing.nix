@@ -1,6 +1,7 @@
 { lib, config, pkgs, ... }:
 
 {
+
   options.glf.printing.enable = lib.mkOption {
     description = "Enable GLF printing configurations.";
     type = lib.types.bool;
@@ -8,11 +9,10 @@
   };
 
   config = lib.mkIf config.glf.printing.enable (let
-    # Calcul des utilisateurs normaux
     allUsers = builtins.attrNames config.users.users;
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser == true) allUsers;
   in {
-    # Configuration de l'impression
+    # Configure printer
     services.printing = {
       enable = true;
       startWhenNeeded = true;
@@ -27,21 +27,22 @@
       ];
     };
 
-    # Activation de la découverte automatique
+    # Enable autodiscovery
     services.avahi = {
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
     };
 
-    # Support des scanners
+    # Scanner support
     hardware.sane = {
       enable = true;
       extraBackends = with pkgs; [ sane-airscan epkowa ];
     };
 
-    # Ajout des utilisateurs normaux aux groupes scanner et lp
+    # Add all users to group scanner and lp
     users.groups.scanner.members = normalUsers;
     users.groups.lp.members = normalUsers;
   });
+
 }
