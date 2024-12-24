@@ -106,8 +106,8 @@
 	    "org/gnome/desktop/background" = {
 	      color-shading-type = "solid";
 	      picture-options = "zoom";
-	      picture-uri = "file:///etc/nixos/glf/white.jpg";
-	      picture-uri-dark = "file:///etc/nixos/glf/dark.jpg";
+	      picture-uri = "file:///${config.environment.etc."wallpapers/glf/white.jpg".source}";
+	      picture-uri-dark = "file:///${config.environment.etc."wallpapers/glf/dark.jpg".source}";
 	    };
 
 	    "org/gnome/desktop/peripherals/touchpad" = {
@@ -163,6 +163,16 @@
       ];
     };
 
+    environment.etc = {
+      "wallpapers/glf/white.jpg".source = pkgs.fetchurl {
+	url = "https://github.com/CORAAL/Nixos-by-GLF/raw/coraal_flakeInit/assets/wallpaper/white.jpg";
+	sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+      "wallpapers/glf/dark.jpg".source = pkgs.fetchurl {
+	url = "https://github.com/CORAAL/Nixos-by-GLF/raw/coraal_flakeInit/assets/wallpaper/dark.jpg";
+	sha256 = "0000000000000000000000000000000000000000000000000000";
+      };
+    };
   };
 
 }
