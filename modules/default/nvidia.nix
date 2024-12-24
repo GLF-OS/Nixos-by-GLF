@@ -34,7 +34,7 @@ in
   config = mkIf cfg.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
 
-    nixpkgs.config.nvidia.acceptLicense = true;
+    # nixpkgs.config.nvidia.acceptLicense = true;
 
     hardware.nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.beta;
