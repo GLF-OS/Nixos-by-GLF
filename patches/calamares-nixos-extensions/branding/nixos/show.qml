@@ -33,7 +33,7 @@ Presentation
         Text {
             id: text1
             anchors.centerIn: parent
-            text: "A community of players"
+            text: qsTr("A community of players")
             font.pixelSize: 30
             wrapMode: Text.WordWrap
             width: presentation.width
@@ -51,8 +51,8 @@ Presentation
         Text {
             anchors.horizontalCenter: background1.horizontalCenter
             anchors.top: text1.bottom
-            text: "The tools you need to play are natively integrated.<br/>"+
-                  "We also tested the applications needed by content creators for their work. <br/>"
+            text: qsTr("The tools you need to play are natively integrated.<br/>"+
+                  "We also tested the applications needed by content creators for their work. <br/>")
             wrapMode: Text.WordWrap
             width: presentation.width
             horizontalAlignment: Text.Center
@@ -63,7 +63,7 @@ Presentation
         Text {
             id: text2
             anchors.centerIn: parent
-            text: "Based on NixOS"
+            text: qsTr("Based on NixOS")
             font.pixelSize: 30
             wrapMode: Text.WordWrap
             width: presentation.width
@@ -81,8 +81,8 @@ Presentation
         Text {
             anchors.horizontalCenter: background2.horizontalCenter
             anchors.top: text2.bottom
-            text: "Based on NixOS, installing or upgrading one package cannot break other packages.<br/>"+
-                  "You can easily roll back to previous versions when you want."
+            text: qsTr("Based on NixOS, installing or upgrading one package cannot break other packages.<br/>"+
+                  "You can easily roll back to previous versions when you want.")
             wrapMode: Text.WordWrap
             width: presentation.width
             horizontalAlignment: Text.Center
@@ -111,9 +111,9 @@ Presentation
         Text {
             anchors.horizontalCenter: background3.horizontalCenter
             anchors.top: text3.bottom
-            text: "GLF OS is fast. Really.<br/>"+
+            text: qsTr("GLF OS is fast. Really.<br/>"+
                   "It has been designed from the beginning for optimal out-of-the-box performance.<br/>"+
-                  "It was designed from the outset to deliver optimum performance straight out of the box."
+                  "It was designed from the outset to deliver optimum performance straight out of the box.")
             wrapMode: Text.WordWrap
             width: presentation.width
             horizontalAlignment: Text.Center
