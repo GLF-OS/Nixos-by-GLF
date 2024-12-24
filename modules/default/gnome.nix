@@ -166,11 +166,11 @@
     environment.etc = {
       "wallpapers/glf/white.jpg".source = pkgs.fetchurl {
 	url = "https://github.com/CORAAL/Nixos-by-GLF/raw/coraal_flakeInit/assets/wallpaper/white.jpg";
-	sha256 = "0000000000000000000000000000000000000000000000000000";
+	sha256 = "";
       };
       "wallpapers/glf/dark.jpg".source = pkgs.fetchurl {
 	url = "https://github.com/CORAAL/Nixos-by-GLF/raw/coraal_flakeInit/assets/wallpaper/dark.jpg";
-	sha256 = "0000000000000000000000000000000000000000000000000000";
+	sha256 = "sha256-zkybmVAcclbg92u16yZ6QhFCvaXeGtYs3yCxfJWx390=";
       };
     };
   };
